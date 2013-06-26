@@ -13,6 +13,9 @@
 </div>
 <?php endforeach ?>
 
+<br>
+<a href="<?php eh(url('thread/index')) ?>" class="btn btn-primary">Thread List</a>
+
 <hr>
 <form class="well" method="post" action="<?php eh(url('thread/write')) ?>">
     <label>Your name</label>

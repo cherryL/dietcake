@@ -7,7 +7,7 @@ require_once APP_DIR . 'app_exception.php';
 
 
 // vendor
-require_once VENDOR_DIR . 'SimpleDBI/SimpleDBI.php';
+require_once VENDOR_DIR .'SimpleDBI/SimpleDBI.php';
 
 require_once VENDOR_DIR.'Pagerfanta/Adapter/AdapterInterface.php';
 require_once VENDOR_DIR.'Pagerfanta/Adapter/ArrayAdapter.php';
