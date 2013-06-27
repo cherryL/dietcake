@@ -22,9 +22,6 @@
     </div>
 
     <div class="container">
-      <div class="dropdown-menu">
-            sample
-      </div>
       <?php echo $_content_ ?>
     </div>
 

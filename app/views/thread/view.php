@@ -1,5 +1,8 @@
+<a href="<?php eh(url('thread/index')) ?>" class="btn btn-primary">Thread List</a>
+<hr>
+
 <h1><?php eh($thread->title) ?></h1>
-<?php foreach ($comments as $k => $v): ?>
+<?php foreach ($comments['data'] as $k => $v): ?>
 <div class="comment">
     <div class="meta">
         <?php eh($k + 1) ?>: <?php eh($v->username) ?> <?php eh($v->created) ?>
@@ -13,8 +16,11 @@
 </div>
 <?php endforeach ?>
 
-<br>
-<a href="<?php eh(url('thread/index')) ?>" class="btn btn-primary">Thread List</a>
+<div class="div-pagination">
+    <div class="pagerfanta">
+        <?php echo $comments['html']; ?>
+    </div>
+</div>
 
 <hr>
 <form class="well" method="post" action="<?php eh(url('thread/write')) ?>">
