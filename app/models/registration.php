@@ -3,9 +3,15 @@ class Registration extends AppModel
 {
     public static function newAccount($account)
     {
+        $data = array(
+            'firstname' => $account['firstname'],
+            'lastname' => $account['lastname'],
+            'username' => $account['username'],
+            'password' => $account['password']
+        );
+
         $db = DB::conn();
-        $db->query('INSERT INTO accounts SET firstname = ?, lastname = ?, username = ?, password = md5(?)',
-            array($account['firstname'], $account['lastname'], $account['username'], $account['password']));
+        $db->insert('accounts', $data);
     }
 
     public static function login($account)
@@ -14,7 +20,7 @@ class Registration extends AppModel
         $row = $db->row('SELECT id FROM accounts WHERE username = ? AND password = md5(?)',
             array($account['username'], $account['password']));
 
-        if($row == FALSE){
+        if(!$row){
             $row[] = null;
         }
 

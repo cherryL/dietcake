@@ -47,10 +47,15 @@ class Thread extends AppModel
             throw new ValidationException('invalid comment');
         }
 
-        $db = DB::conn();
-        $db->query('INSERT INTO comment SET thread_id = ?, username = ?, body = ?, created = NOW()',
-            array($this->id, $comment->username, $comment->body)
+        $data = array(
+            'thread_id' => $this->id,
+            'username' => $comment->username,
+            'body' => $comment->body,
+            'created' => date('Y-m-d H:i:s')
         );
+
+        $db = DB::conn();
+        $db->insert('comment', $data);
     }
 
     public function create(Comment $comment)
@@ -61,29 +66,17 @@ class Thread extends AppModel
             throw new ValidationException('invalid thread or comment');
         }
 
+        $data = array(
+            'title' => $this->title,
+            'created' => date('Y-m-d H:i:s')
+        );
+
         $db = DB::conn();
         $db->begin();
-        $db->query('INSERT INTO thread SET title = ?, created = NOW()', array($this->title));
+        $db->insert('thread', $data);
         $this->id = $db->lastInsertId();
 
         $this->write($comment);
         $db->commit();
     }
-
-    public static function objectToarray($data)
-    {
-        try{
-            if (is_array($data) || is_object($data)){
-                $result = array();
-                foreach ($data as $key => $value){
-                    $result[$key] = $value;
-                }
-                return $result;
-            }
-            return $data;
-        } catch(ErrorException $e) {
-            return "error ";
-        }
-    }
-
 }

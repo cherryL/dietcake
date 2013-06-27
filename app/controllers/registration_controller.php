@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 class RegistrationController extends AppController
 {
     public function createAccount()
@@ -56,5 +54,14 @@ class RegistrationController extends AppController
         }
 
         $this->set(get_defined_vars());
+    }
+
+    public function logoutAccount()
+    {
+        unset($_SESSION['user_id']);
+        unset($_SESSION['user_name']);
+        session_destroy();
+
+        header('location: /registration/loginAccount');
     }
 }

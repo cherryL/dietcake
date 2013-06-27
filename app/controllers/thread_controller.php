@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 class ThreadController extends AppController
 {
     public function index()
