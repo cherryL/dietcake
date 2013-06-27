@@ -13,6 +13,9 @@
   </head>
 
   <body>
+    <div class="left-container">
+
+    </div>
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">

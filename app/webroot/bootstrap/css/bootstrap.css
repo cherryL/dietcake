@@ -164,6 +164,13 @@ body {
   background-color: #ffffff;
 }
 
+.left-container {
+    float: left;
+    height: 100px;
+    width: 150px;
+    margin: 5px 5px 5px 5px;
+}
+
 a {
   color: #0088cc;
   text-decoration: none;
