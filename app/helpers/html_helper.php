@@ -15,5 +15,5 @@ return $s;
 
 function routeGenerator($page)
 {
-    return url('', array('page' => $page))  ;
+    return url('', array('page' => $page));
 }

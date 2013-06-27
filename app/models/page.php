@@ -2,12 +2,12 @@
 
 class Page extends AppModel
 {
-    public static function paging($data)
+    public static function paging($data, $data_per_page)
     {
         $page = Param::get('page', 1);
         $adapter = new \Pagerfanta\Adapter\ArrayAdapter($data);
         $paginator = new \Pagerfanta\Pagerfanta($adapter);
-        $paginator->setMaxPerPage(1);
+        $paginator->setMaxPerPage($data_per_page);
         $paginator->setCurrentPage($page);
         $paged_data['data'] = $paginator->getCurrentPageResults();
 

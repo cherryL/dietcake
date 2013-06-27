@@ -2,20 +2,23 @@
 <hr>
 
 <h1><?php eh($thread->title) ?></h1>
+<table>
 <?php foreach ($comments['data'] as $k => $v): ?>
 <div class="comment">
-    <div class="meta">
-        <?php eh($k + 1) ?>: <?php eh($v->username) ?> <?php eh($v->created) ?>
-    </div>
-    <div>
-        <?php eh($v->body) ?>
-    </div>
-    <div>
-        <?php echo readable_text($v->body) ?>
-    </div>
+    <tr>
+        <td><?php eh($k + 1) ?></td>
+        <td><?php eh($v->username) ?></td>
+        <td><?php eh($v->created) ?></td>
+        <td><?php eh($v->body) ?></td>
+        <td>
+            <a href="<?php eh(url('thread/editComment', array('id' => $v->id, 'thread_id' => $v->thread_id))) ?>" class="btn btn-primary">Edit</a>
+        </td>
+    </tr>
 </div>
 <?php endforeach ?>
+</table>
 
+<hr>
 <div class="div-pagination">
     <div class="pagerfanta">
         <?php echo $comments['html']; ?>

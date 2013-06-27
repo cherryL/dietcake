@@ -41,6 +41,13 @@ class Thread extends AppModel
         return $comments;
     }
 
+    public function getCommentById($id)
+    {
+        $db = DB::conn();
+        $row = $db->row('SELECT * FROM comment WHERE id = ?', array($id));
+        return new self($row);
+    }
+
     public function write(Comment $comment)
     {
         if (!$comment->validate()) {
@@ -78,5 +85,11 @@ class Thread extends AppModel
 
         $this->write($comment);
         $db->commit();
+    }
+
+    public  function updateComment($data, $where)
+    {
+        $db = DB::conn();
+        $db->update('comment', $data, $where);
     }
 }

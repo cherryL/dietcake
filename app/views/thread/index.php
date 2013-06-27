@@ -6,9 +6,7 @@
 <ul>
     <?php foreach ($threads['data'] as $v): ?>
         <li>
-            <a href="<?php eh(url('thread/view', array('thread_id' => $v->id))) ?>">
-                <?php eh($v->title) ?>
-            </a>
+            <a href="<?php eh(url('thread/view', array('thread_id' => $v->id))) ?>"><?php eh($v->title) ?></a>
         </li>
     <?php endforeach ?>
 </ul>
