@@ -1,15 +1,20 @@
 <?php
+
 class ThreadController extends AppController
 {
     public function index()
     {
+        if(!isset($_SESSION['user_id'])){
+            header('location: /registration/loginAccount');
+        }
+
         $threads = Thread::getAll();
 
         $adapter = new \Pagerfanta\Adapter\ArrayAdapter($threads);
         $paginator = new \Pagerfanta\Pagerfanta($adapter);
         $paginator->setMaxPerPage(1);
         $paginator->setCurrentPage(Param::get('page', 1));
-        $threads = Thread::objectToarray($paginator);
+        $threads = $paginator->getCurrentPageResults();
 
         $view = new \Pagerfanta\View\DefaultView();
         $options = array('proximity' => 3, 'url' => 'card/all');

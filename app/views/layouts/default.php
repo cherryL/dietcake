@@ -13,7 +13,6 @@
   </head>
 
   <body>
-
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -23,9 +22,10 @@
     </div>
 
     <div class="container">
-
+      <div class="dropdown-menu">
+            sample
+      </div>
       <?php echo $_content_ ?>
-
     </div>
 
     <script>

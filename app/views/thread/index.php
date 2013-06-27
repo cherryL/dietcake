@@ -1,5 +1,6 @@
 <h1>All threads</h1>
-<a class="btn btn-large btn-primary" href="<?php eh(url('thread/create')) ?>">Create</a>
+<a class="btn btn-large btn-primary" href="<?php eh(url('thread/create')) ?>">Create</a> |
+<a class="btn btn-large btn-primary" href="<?php eh(url('registration/logoutAccount')) ?>">Logout</a>
 
 <hr>
 <ul>
