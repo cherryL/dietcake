@@ -1,27 +1,30 @@
 <?php
+
 class ThreadController extends AppController
 {
     public function index()
     {
+        if(!isset($_SESSION['user_id'])){
+            header('location: /registration/loginAccount');
+        }
+
+        $data_per_page = 10;
         $threads = Thread::getAll();
 
-        $adapter = new \Pagerfanta\Adapter\ArrayAdapter($threads);
-        $paginator = new \Pagerfanta\Pagerfanta($adapter);
-        $paginator->setMaxPerPage(1);
-        $paginator->setCurrentPage(Param::get('page', 1));
-        $threads = Thread::objectToarray($paginator);
-
-        $view = new \Pagerfanta\View\DefaultView();
-        $options = array('proximity' => 3, 'url' => 'card/all');
-        $html = $view->render($paginator, 'routeGenerator', $options);
+        $threads = Page::paging($threads, $data_per_page);
 
         $this->set(get_defined_vars());
     }
 
     public function view()
     {
+        $data_per_page = 3;
+
         $thread = Thread::get(Param::get('thread_id'));
         $comments = $thread->getComments();
+
+        $comments = Page::paging($comments, $data_per_page);
+
         $this->set(get_defined_vars());
     }
 
@@ -77,5 +80,26 @@ class ThreadController extends AppController
 
         $this->set(get_defined_vars());
         $this->render($page);
+    }
+
+    public function editComment()
+    {
+        $comment = new Thread();
+        $row = $comment->getCommentById(Param::get('id'));
+
+        if(Param::get('edit')){
+            $data = array(
+                'username' => Param::get('username'),
+                'body' => Param::get('body')
+            );
+            $where = array('id' => Param::get('id'));
+
+            $comment = new Thread();
+            $comment->updateComment($data, $where);
+
+            header('location:'.url('thread/view', array('thread_id' => Param::get('thread_id'))));
+        }
+
+        $this->set(get_defined_vars());
     }
 }

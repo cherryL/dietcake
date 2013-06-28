@@ -164,6 +164,16 @@ body {
   background-color: #ffffff;
 }
 
+.left-container {
+    float: left;
+    height: 100px;
+    width: 150px;
+    padding: 19px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
 a {
   color: #0088cc;
   text-decoration: none;
@@ -197,7 +207,7 @@ a:hover {
 .container,
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
-  width: 940px;
+  width: 700px;
 }
 
 .span12 {
@@ -3761,7 +3771,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
-  width: 940px;
+  width: 700px;
 }
 
 .navbar-fixed-top {

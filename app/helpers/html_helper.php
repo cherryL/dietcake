@@ -15,5 +15,5 @@ return $s;
 
 function routeGenerator($page)
 {
-    return $_SERVER['REDIRECT_URL'].'?page='.$page;
+    return url('', array('page' => $page));
 }

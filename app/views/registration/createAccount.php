@@ -8,6 +8,8 @@
     </div>
 <?php endif ?>
 
+<hr>
+
 <form class="well" method="post" action="<?php eh(url('registration/createAccount')) ?>">
     <label>First name</label> <input type="text" class="span2" name="firstname">
     <label>Last name</label> <input type="text" class="span2" name="lastname">
